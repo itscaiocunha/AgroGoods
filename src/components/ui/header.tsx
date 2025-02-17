@@ -11,7 +11,7 @@ export const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <a href="/" className="flex items-center space-x-2">
-            <img src="public/logo/logo_agrogoods.png" alt="AgroGoods Logo" className="w-36 h-auto"/>
+            <img src="https://w7startup.com.br/img/logo_agrogoods.png" alt="AgroGoods Logo" className="w-36 h-auto"/>
           </a>
 
 

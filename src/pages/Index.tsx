@@ -6,13 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { Phone, Mail, MapPin, Instagram, Facebook, Linkedin } from "lucide-react";
 
 export default function Index() {
-  const navigate = useNavigate();
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    navigate('/sucesso');
-  };
-
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -47,7 +40,7 @@ export default function Index() {
                 Monte seu negócio online, trabalhe de onde quiser e receba suporte completo dos nossos especialistas.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <CTAButton href="#cadastro" className="text-xl">
+                <CTAButton href="https://share.hsforms.com/2rmfHO1JSTqyMh-GgwUsOXAsm5jo" className="text-xl">
                   Começar agora
                 </CTAButton>
                 <div className="flex items-center justify-center sm:justify-start">
@@ -282,42 +275,14 @@ export default function Index() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
               Cadastre-se agora
             </h2>
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Nome completo
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agrogoods-primary focus:border-transparent"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  E-mail
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agrogoods-primary focus:border-transparent"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                  Telefone/WhatsApp
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agrogoods-primary focus:border-transparent"
-                  required
-                />
-              </div>
-              <CTAButton type="submit" className="w-full justify-center" onClick={() => (window.location.href = "/sucesso")}>
-                Enviar cadastro
+            <form className="space-y-6">
+              <p className="text-center">Preencha o formulário a seguir, nós entraremos em contato</p>
+              <CTAButton
+                type="button"
+                className="w-full justify-center"
+                onClick={() => window.open("https://share.hsforms.com/2rmfHO1JSTqyMh-GgwUsOXAsm5jo", "_blank")}
+              >
+                Preencher cadastro
               </CTAButton>
             </form>
           </motion.div>

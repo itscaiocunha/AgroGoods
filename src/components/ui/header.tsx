@@ -23,9 +23,6 @@ export const Header = () => {
             <a href="#como-funciona" className="text-gray-600 hover:text-agrogoods-primary transition-colors">
               Como Funciona
             </a>
-            <a href="#depoimentos" className="text-gray-600 hover:text-agrogoods-primary transition-colors">
-              Depoimentos
-            </a>
             <a href="#cadastro" className="text-gray-600 hover:text-agrogoods-primary transition-colors">
               Cadastre-se
             </a>

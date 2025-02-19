@@ -312,16 +312,6 @@ export default function Index() {
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Links Úteis</h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="#beneficios" className="text-gray-600 hover:text-agrogoods-primary transition-colors">
-                    Benefícios
-                  </a>
-                </li>
-                <li>
-                  <a href="#como-funciona" className="text-gray-600 hover:text-agrogoods-primary transition-colors">
-                    Como Funciona
-                  </a>
-                </li>
-                <li>
                   <a href="/privacidade" className="text-gray-600 hover:text-agrogoods-primary transition-colors">
                     Política de Privacidade
                   </a>

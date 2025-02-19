@@ -13,7 +13,7 @@ const Privacidade = () => {
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">1. Introdução</h2>
-            <p>Na [Nome da Loja], a segurança dos seus dados é uma prioridade. Esta Política de Segurança descreve as medidas que adotamos para proteger suas informações pessoais e garantir uma experiência de compra segura.</p>
+            <p>Na Agrogoods, a segurança dos seus dados é uma prioridade. Esta Política de Segurança descreve as medidas que adotamos para proteger suas informações pessoais e garantir uma experiência de compra segura.</p>
           </section>
 
           <section className="mb-8">
@@ -70,8 +70,8 @@ const Privacidade = () => {
             <h3 className="text-xl font-semibold mb-3">7.1 Contato</h3>
             <p>Se você suspeitar de qualquer atividade suspeita ou detectar uma vulnerabilidade de segurança em nosso site, por favor, entre em contato conosco imediatamente:</p>
             <ul className="list-disc pl-6 mt-2">
-              <li>Email: seguranca@nomedaloja.com</li>
-              <li>Telefone: +55 11 1234-5678</li>
+              <li>Email: contato@agrogoods.com.br</li>
+              <li>Telefone: +55 (16) 99777-2276</li>
             </ul>
             
             <h3 className="text-xl font-semibold mb-3 mt-6">7.2 Investigação</h3>
@@ -102,15 +102,11 @@ const Privacidade = () => {
             <div>
               <img src="https://w7startup.com.br/img/logo_agrogoods.png" alt="logo_agrogoods" className="w-56"/>
               <div className="flex space-x-4 px-16">
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
+                <a href="https://www.instagram.com/agrogoods/" target="_blank" rel="noopener noreferrer" 
                    className="text-gray-600 hover:text-agrogoods-primary transition-colors">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
-                   className="text-gray-600 hover:text-agrogoods-primary transition-colors">
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+                <a href="https://www.linkedin.com/company/agrogoods/" target="_blank" rel="noopener noreferrer"
                    className="text-gray-600 hover:text-agrogoods-primary transition-colors">
                   <Linkedin className="w-5 h-5" />
                 </a>
@@ -121,16 +117,6 @@ const Privacidade = () => {
             <div>
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Links Úteis</h3>
               <ul className="space-y-2">
-                <li>
-                  <a href="/" className="text-gray-600 hover:text-agrogoods-primary transition-colors">
-                    Benefícios
-                  </a>
-                </li>
-                <li>
-                  <a href="/" className="text-gray-600 hover:text-agrogoods-primary transition-colors">
-                    Como Funciona
-                  </a>
-                </li>
                 <li>
                   <a href="/privacidade" className="text-gray-600 hover:text-agrogoods-primary transition-colors">
                     Política de Privacidade

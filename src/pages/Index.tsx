@@ -2,8 +2,7 @@ import { motion } from "framer-motion";
 import { Header } from "@/components/ui/header";
 import { CTAButton } from "@/components/ui/cta-button";
 import { Sprout, DollarSign, Clock, Users, ArrowRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import { Phone, Mail, MapPin, Instagram, Facebook, Linkedin } from "lucide-react";
+import { Phone, Mail, Instagram, Linkedin } from "lucide-react";
 
 export default function Index() {
   return (
@@ -40,7 +39,7 @@ export default function Index() {
                 Monte seu negócio online, trabalhe de onde quiser e receba suporte completo dos nossos especialistas.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <CTAButton href="https://share.hsforms.com/2rmfHO1JSTqyMh-GgwUsOXAsm5jo" className="text-xl">
+                <CTAButton href="#cadastro" className="text-xl">
                   Começar agora
                 </CTAButton>
                 <div className="flex items-center justify-center sm:justify-start">
@@ -280,7 +279,7 @@ export default function Index() {
               <CTAButton
                 type="button"
                 className="w-full justify-center"
-                onClick={() => window.open("https://share.hsforms.com/2rmfHO1JSTqyMh-GgwUsOXAsm5jo", "_blank")}
+                onClick={() => window.open("https://share.hsforms.com/1atZMj6OnRQGKZH28Wac-zAsm5jo", "_blank")}
               >
                 Preencher cadastro
               </CTAButton>
@@ -297,15 +296,11 @@ export default function Index() {
             <div>
               <img src="https://w7startup.com.br/img/logo_agrogoods.png" alt="logo_agrogoods" className="w-56"/>
               <div className="flex space-x-4 px-16">
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
+                <a href="https://www.instagram.com/agrogoods/" target="_blank" rel="noopener noreferrer" 
                    className="text-gray-600 hover:text-agrogoods-primary transition-colors">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
-                   className="text-gray-600 hover:text-agrogoods-primary transition-colors">
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+                <a href="https://www.linkedin.com/company/agrogoods/" target="_blank" rel="noopener noreferrer"
                    className="text-gray-600 hover:text-agrogoods-primary transition-colors">
                   <Linkedin className="w-5 h-5" />
                 </a>

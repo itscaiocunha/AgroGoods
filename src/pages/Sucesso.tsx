@@ -43,17 +43,20 @@ export default function Sucesso() {
                   {
                     icon: Download,
                     title: "Baixe nosso app",
-                    description: "Acesse sua loja pelo celular"
+                    description: "Acesse sua loja pelo celular",
+                    url: "https://play.google.com/store/search?q=agrogoods&c=apps&pli=1"
                   },
                   {
                     icon: Book,
                     title: "Material inicial",
-                    description: "Comece seus estudos"
+                    description: "Comece seus estudos",
+                    url: ""
                   },
                   {
                     icon: MessageCircle,
                     title: "Entre no grupo",
-                    description: "Conheça outros vendedores"
+                    description: "Conheça outros vendedores",
+                    url: ""
                   }
                 ].map((step, index) => (
                   <motion.div
@@ -63,11 +66,13 @@ export default function Sucesso() {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="bg-white p-6 rounded-xl shadow-sm"
                   >
-                    <div className="w-12 h-12 bg-agrogoods-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                      <step.icon className="w-6 h-6 text-agrogoods-primary" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{step.title}</h3>
-                    <p className="text-gray-600">{step.description}</p>
+                    <a href={step.url}>
+                      <div className="w-12 h-12 bg-agrogoods-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                        <step.icon className="w-6 h-6 text-agrogoods-primary" />
+                      </div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">{step.title}</h3>
+                      <p className="text-gray-600">{step.description}</p>
+                    </a>
                   </motion.div>
                 ))}
               </div>

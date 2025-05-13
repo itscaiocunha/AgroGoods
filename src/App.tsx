@@ -8,6 +8,9 @@ import NotFound from "./pages/NotFound";
 import Sucesso from "./pages/Sucesso";
 import Privacidade from "./pages/Privacidade";
 import Termos from "./pages/Termos";
+import Blog from "./pages/Blog";
+import BlogWrite from "./pages/BlogEscrita";
+import BlogPost from "./pages/BlogPost";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +25,9 @@ const App = () => (
           <Route path="/sucesso" element={<Sucesso />} />
           <Route path="/privacidade" element={<Privacidade />} />
           <Route path="/termos" element={<Termos />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/escrever" element={<BlogWrite />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

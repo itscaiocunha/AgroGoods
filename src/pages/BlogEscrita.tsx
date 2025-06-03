@@ -7,8 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
-import { BlogPost } from "../types/blog";
 import { Phone, Mail, Instagram, Linkedin } from "lucide-react";
+import axios from "axios"; 
 
 const BlogWrite = () => {
   const navigate = useNavigate();
@@ -17,7 +17,6 @@ const BlogWrite = () => {
     excerpt: "",
     content: "",
     author: "",
-    imageUrl: "/placeholder.svg",
     tags: ""
   });
 
@@ -29,30 +28,37 @@ const BlogWrite = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // In a real app, this would save to a database
-    // For now, we'll just show a success message and redirect
-    
-    const newPost: Partial<BlogPost> = {
-      ...formData,
-      date: new Date().toISOString().split('T')[0],
-      tags: formData.tags.split(',').map(tag => tag.trim())
-    };
-    
-    console.log('New blog post:', newPost);
-    
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  const payload = {
+    titulo: formData.title,
+    resumo: formData.excerpt,
+    conteudo: formData.content,
+    autor: formData.author,
+    tags: formData.tags,
+  };
+
+  try {
+    await axios.post("https://agrogoods-blog-api.vercel.app/api/blog", payload);
+
     toast({
       title: "Artigo criado com sucesso!",
-      description: "O artigo foi publicado no blog da AgroGoods."
+      description: "O artigo foi publicado no blog da AgroGoods.",
     });
-    
-    // Redirect to the blog page
+
     setTimeout(() => {
       navigate('/blog');
     }, 1500);
-  };
+  } catch (error) {
+    console.error("Erro ao publicar artigo:", error);
+    toast({
+      title: "Erro ao publicar artigo",
+      description: "Tente novamente mais tarde.",
+      variant: "destructive",
+    });
+  }
+};
 
   return (
     <div className="min-h-screen flex flex-col">

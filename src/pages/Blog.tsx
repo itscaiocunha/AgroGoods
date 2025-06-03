@@ -1,85 +1,46 @@
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { Header } from "@/components/ui/header";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
-import { File, Calendar } from "lucide-react";
-import { BlogPost } from "../types/blog";
+import { Card, CardContent, CardDescription, CardFooter, CardTitle } from "@/components/ui/card";
+import { Calendar } from "lucide-react";
 import { Phone, Mail, Instagram, Linkedin } from "lucide-react";
 
-// Temporary mock data for blog posts
-const mockPosts: BlogPost[] = [
-  {
-    id: 1,
-    title: "Novas técnicas de irrigação sustentável ganham destaque",
-    excerpt: "Pesquisadores desenvolveram métodos inovadores para economizar água na agricultura...",
-    content: "Pesquisadores desenvolveram métodos inovadores para economizar água na agricultura sem comprometer a produtividade das colheitas. Estas técnicas combinam sensores IoT com análise de dados em tempo real...",
-    author: "Carlos Silva",
-    date: "2025-05-10",
-    imageUrl: "/placeholder.svg",
-    tags: ["irrigação", "sustentabilidade", "tecnologia"]
-  },
-  {
-    id: 2,
-    title: "Mercado de orgânicos cresce 25% no último ano",
-    excerpt: "O consumo de produtos orgânicos bateu recorde e produtores comemoram...",
-    content: "O consumo de produtos orgânicos bateu recorde e produtores comemoram o aumento na demanda. Especialistas atribuem o crescimento à maior conscientização dos consumidores sobre saúde e meio ambiente...",
-    author: "Ana Costa",
-    date: "2025-05-08",
-    imageUrl: "/placeholder.svg",
-    tags: ["orgânicos", "mercado", "crescimento"]
-  },
-  {
-    id: 3,
-    title: "Nova política agrícola beneficia pequenos produtores",
-    excerpt: "Governo anuncia pacote de incentivos para agricultura familiar...",
-    content: "Governo anuncia pacote de incentivos para agricultura familiar com foco em crédito facilitado e assistência técnica. A medida deve beneficiar mais de 500 mil famílias em todo o país...",
-    author: "Pedro Almeida",
-    date: "2025-05-05",
-    imageUrl: "/placeholder.svg",
-    tags: ["política", "incentivos", "agricultura familiar"]
-  },
-  {
-    id: 4,
-    title: "Nova política agrícola beneficia pequenos produtores",
-    excerpt: "Governo anuncia pacote de incentivos para agricultura familiar...",
-    content: "Governo anuncia pacote de incentivos para agricultura familiar com foco em crédito facilitado e assistência técnica. A medida deve beneficiar mais de 500 mil famílias em todo o país...",
-    author: "Pedro Almeida",
-    date: "2025-05-05",
-    imageUrl: "/placeholder.svg",
-    tags: ["política", "incentivos", "agricultura familiar"]
-  },
-  {
-    id: 5,
-    title: "Nova política agrícola beneficia pequenos produtores",
-    excerpt: "Governo anuncia pacote de incentivos para agricultura familiar...",
-    content: "Governo anuncia pacote de incentivos para agricultura familiar com foco em crédito facilitado e assistência técnica. A medida deve beneficiar mais de 500 mil famílias em todo o país...",
-    author: "Pedro Almeida",
-    date: "2025-05-05",
-    imageUrl: "/placeholder.svg",
-    tags: ["política", "incentivos", "agricultura familiar"]
-  },
-  {
-    id: 6,
-    title: "Nova política agrícola beneficia pequenos produtores",
-    excerpt: "Governo anuncia pacote de incentivos para agricultura familiar...",
-    content: "Governo anuncia pacote de incentivos para agricultura familiar com foco em crédito facilitado e assistência técnica. A medida deve beneficiar mais de 500 mil famílias em todo o país...",
-    author: "Pedro Almeida",
-    date: "2025-05-05",
-    imageUrl: "/placeholder.svg",
-    tags: ["política", "incentivos", "agricultura familiar"]
-  }
-];
+type BlogPost = {
+  id: number;
+  titulo: string;
+  resumo: string;
+  criadoEm: string;
+};
 
 const Blog = () => {
-  const [posts] = useState<BlogPost[]>(mockPosts);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Format date to a more readable format
+  useEffect(() => {
+    axios
+      .get<BlogPost[]>("https://agrogoods-blog-api.vercel.app/api/blog", {
+        headers: {
+          "x-api-key":
+            "y8X9ehpKM7dS2dGSj514BaMhf9XHyUm7ZbEdEW53Rlm70PLW31Jvkr4xU5SXSe5l8KDixokH6qUE2RHPt3qeMmPPoKgsYLObvFO7Y4RaABr1Sp5J0nDs6I3vz6AE8PqH",
+        },
+      })
+      .then((response) => {
+        setPosts(response.data);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar posts do blog:", error);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
   const formatDate = (dateString: string) => {
-    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('pt-BR', options);
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    return new Date(dateString).toLocaleDateString("pt-BR", options);
   };
 
   return (
@@ -87,33 +48,37 @@ const Blog = () => {
       <Header />
       
       <main className="flex-grow container mx-auto px-4 py-16 mt-16">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-agrogoods-primary">Blog AgroGoods</h1>
-        </div>
-        
+        <h1 className="text-3xl font-bold text-agrogoods-primary mb-4">Blog AgroGoods</h1>
         <p className="text-lg text-gray-600 mb-8">
           Acompanhe as últimas notícias e tendências do mundo agro
         </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map(post => (
-            <Card key={post.id} className="hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="pt-6">
-                <div className="flex items-center text-sm text-gray-500 mb-2">
-                  <Calendar className="mr-1 h-4 w-4" />
-                  <span>{formatDate(post.date)}</span>
-                </div>
-                <CardTitle className="text-xl mb-2 text-agrogoods-primary">{post.title}</CardTitle>
-                <CardDescription className="text-gray-600">{post.excerpt}</CardDescription>
-              </CardContent>
-              <CardFooter>
-                <Link to={`/blog/${post.id}`} className="text-agrogoods-secondary font-medium hover:text-agrogoods-primary transition-colors">
-                  Ler mais
-                </Link>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
+
+        {loading ? (
+          <p className="text-gray-600">Carregando publicações...</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {posts.map((post) => (
+              <Card key={post.id} className="hover:shadow-lg transition-shadow duration-300">
+                <CardContent className="pt-6">
+                  <div className="flex items-center text-sm text-gray-500 mb-2">
+                    <Calendar className="mr-1 h-4 w-4" />
+                    <span>{formatDate(post.criadoEm)}</span>
+                  </div>
+                  <CardTitle className="text-xl mb-2 text-agrogoods-primary">{post.titulo}</CardTitle>
+                  <CardDescription className="text-gray-600">{post.resumo}</CardDescription>
+                </CardContent>
+                <CardFooter>
+                  <Link
+                    to={`/blog/${post.id}`}
+                    className="text-agrogoods-secondary font-medium hover:text-agrogoods-primary transition-colors"
+                  >
+                    Ler mais
+                  </Link>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        )}
       </main>
 
       {/* Footer */}
